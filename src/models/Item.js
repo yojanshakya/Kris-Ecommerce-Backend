@@ -37,7 +37,7 @@ ItemSchema.statics.findItem = (title, price, sale) =>{
 	return model('item').find({title, price, sale});
 }
 
-ItemSchema.statics.getAllItem = () => {
+ItemSchema.statics.getAllItems = () => {
 	return model('item').find();
 }
 

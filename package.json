@@ -1,14 +1,18 @@
 {
+  "type": "module",
   "name": "kris-ecommerce-backend",
   "version": "1.0.0",
   "description": "Backend for ecommerce site",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+		"dev": "nodemon --experimental-modules src/index.js",
+		"mongo":"mongo mongodb+srv://devPractice:devPractice@cluster0-qyrod.mongodb.net/krishaStore"
   },
   "author": "Yojan Shakya",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongodb-session": "^2.4.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",

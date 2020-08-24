@@ -1,23 +1,12 @@
-const router = require('express').Router();
+import Express from 'express';
+import {postItem, getItems} from './controllers/item'
+import { adminLoggedIn } from '../middlewares';
 
-const Item = require('../models/Item');
-const JSONResponse = require('../utils/JSONResponse');
+const itemRouter = Express.Router();
+
+itemRouter.post('/item', adminLoggedIn, postItem)
+
+itemRouter.get('/items',getItems)
 
 
-router.post('/createItem', (req, res, next)=>{
-	
-	let {title, price, description, image, sale, prevPrice} = req.body;
-	
-	Item.addItem(title, price, description, image, sale, prevPrice)
-	.then(
-		(item) => {
-			res.json(new JSONResponse('success', {
-				item
-			}))
-		}
-	)
-	.catch(
-		(err) => {
-		
-	});;
-} )
+export default itemRouter;
