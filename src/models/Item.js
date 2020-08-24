@@ -1,4 +1,6 @@
-const {model, Schema} = require('mongoose');
+import mongoose from 'mongoose';
+
+let {model, Schema} = mongoose;
 
 let ItemSchema = new Schema(
 	{
@@ -21,7 +23,8 @@ let ItemSchema = new Schema(
 			type: String
 		},
 		sale: {
-			type: Boolean
+			type: Boolean,
+			default: false
 		},
 		prevPrice:{
 			type: Number
@@ -49,4 +52,6 @@ ItemSchema.statics.updateItem = (id, title, price, description, image, sale, pre
 	return model('item').findByIdAndUpdate(id, {title, price, description, image, sale, prevPrice});
 }
 
-module.exports = model('item', ItemSchema)
+const Item =  model('item', ItemSchema)
+
+export default Item;

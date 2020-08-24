@@ -58,7 +58,10 @@ authRoutes.post('/adminLogin', (req, res, next)=>{
 	Admin.login(email, password)
 	.then(
 		(admin)=>{
+			admin = admin.toObject();
 			req.session.admin = admin;
+			
+			delete admin.password;
 			res.json(new JSONResponse('success', {admin}));
 		}
 	)

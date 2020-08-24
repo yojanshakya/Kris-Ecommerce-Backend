@@ -8,7 +8,11 @@ import { MONGO_URI, MONGO_OPTIONS } from './config/db.js';
 let MongoDBStore = mongoSession(session)
 let store = new MongoDBStore({
 	uri: MONGO_URI,
-	collection: 'session'
+	collection: 'mySessions'
+})
+
+store.on('error', function(err){
+	console.log(err);
 })
 
 let app = createApp(store);
